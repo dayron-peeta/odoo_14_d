@@ -9,25 +9,30 @@ sudo systemctl enable docker
 sudo systemctl start docker
 
 2. Instala Docker-compose
+sudo apt install curl -y
 sudo curl -L "https://github.com/docker/compose/releases/download/v2.23.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
 3.Dar permisos necesarios
-- Dar permisos a tu usuario para usar Docker sin sudo
+#Dar permisos a tu usuario para usar Docker sin sudo
 sudo usermod -aG docker $USER
-- Dar permisos a los directorios
+#Dar permisos a los directorios
 chmod -R 755 .
 - CERRAR COMPLETAMENTE LA TERMINAL y abrir una nueva 
 - Verificar que funciona
 docker run hello-world
 
 4. Instalar Odoo 14, postgres y pgadmin
-make docker up
+sudo apt install make        # version 4.3-4.1build1
+make docker-up
 
 5.Inicializa DB
 make init-db
 
-6. Pasos en pgAdmin:
+6. Acceder a Odoo
+URL: http://localhost:8114
+
+7. Pasos en pgAdmin:
 Ve a http://localhost:8080
 Login con: email: dayronpeeta@gmail.com, password: postgres
 Add New Server → Connection:
@@ -36,9 +41,6 @@ Host: postgres
 Port: 5432
 Username: odoo14
 Password: odoo14
-  
-7. Acceder a Odoo
-URL: http://localhost:8114
 
 Usuario: admin
 Contraseña: admin
